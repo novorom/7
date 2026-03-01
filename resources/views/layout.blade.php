@@ -6,6 +6,36 @@
 
  <title>@yield('title', 'CERSANIT ЯНИНО - Официальный дилер в Санкт-Петербурге')</title>
  <meta name="description" content="@yield('meta_description', 'Керамическая плитка и керамогранит Cersanit со скидкой 20% от розницы. Склад в Янино, доставка по СПб и области.')">
+ @if(View::hasSection('meta_keywords'))
+ <meta name="keywords" content="@yield('meta_keywords')">
+ @endif
+ @if(View::hasSection('canonical'))
+ <link rel="canonical" href="@yield('canonical')">
+ @endif
+
+ {{-- Open Graph --}}
+ <meta property="og:locale" content="ru_RU">
+ <meta property="og:site_name" content="CERSANIT ЯНИНО">
+ <meta property="og:type" content="@yield('og_type', 'website')">
+ <meta property="og:title" content="@yield('og_title', 'CERSANIT ЯНИНО - Официальный дилер в Санкт-Петербурге')">
+ <meta property="og:description" content="@yield('og_description', 'Керамическая плитка и керамогранит Cersanit со скидкой 20% от розницы.')">
+ <meta property="og:url" content="@yield('og_url', url()->current())">
+ @if(View::hasSection('og_image'))
+ <meta property="og:image" content="@yield('og_image')">
+ <meta property="og:image:width" content="800">
+ <meta property="og:image:height" content="800">
+ @endif
+
+ {{-- Twitter Card --}}
+ <meta name="twitter:card" content="summary_large_image">
+ <meta name="twitter:title" content="@yield('og_title', 'CERSANIT ЯНИНО')">
+ <meta name="twitter:description" content="@yield('og_description', 'Керамическая плитка Cersanit со скидкой 20%.')">
+ @if(View::hasSection('og_image'))
+ <meta name="twitter:image" content="@yield('og_image')">
+ @endif
+
+ {{-- JSON-LD схемы страницы --}}
+ @stack('schema')
 
  <!-- Fonts -->
  <link rel="preconnect" href="https://fonts.bunny.net">
